@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Todo List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        ul {
+            display: flex;
+            gap: 16px;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .todo-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .todo-item:last-child {
+            border-bottom: none;
+        }
+
+        .todo-item label {
+            font-size: 18px;
+        }
+
+        .todo-item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .add-todo-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .add-todo-form input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .add-todo-form button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .add-todo-form button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Todo List</h1>
+        <ul>
+            <li><a href="{% url 'data' %}">Check To Do</a></li>
+        </ul>
+    </header>
+
+    <div class="todo-container">
+
+            <form class="add-todo-form" method="post" action="{% url 'home' %}">
+
+                {% csrf_token %}
+                <input type="text" placeholder="New to do" name="desc">
+                <button type="submit">Add</button>
+            </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Todo List</title>
+</head>
+<body>
+    <h1>Your Todo List</h1>
+
+    {% if data %}
+        <ul>
+            {% for i in data %}
+                <li>
+                    <p>{{ i.description }} || {{ i.created_at|date:"d M Y H:i" }}</p> <!-- Форматируем дату -->
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tasks found. Add new tasks on the home page.</p>
+    {% endif %}
+</body>
+</html>
